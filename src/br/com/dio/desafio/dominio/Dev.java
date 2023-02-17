@@ -1,6 +1,7 @@
 package br.com.dio.desafio.dominio;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Dev {
     private String nome;
@@ -13,6 +14,7 @@ public class Dev {
     }
 
     public void progredir() {
+
         Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
         if(conteudo.isPresent()) {
             this.conteudosConcluidos.add(conteudo.get());
@@ -23,18 +25,19 @@ public class Dev {
     }
 
     public double calcularTotalXp() {
-        Iterator<Conteudo> iterator = this.conteudosConcluidos.iterator();
+
+        /*Iterator<Conteudo> iterator = this.conteudosConcluidos.iterator();
         double soma = 0;
         while(iterator.hasNext()){
             double next = iterator.next().calcularXp();
             soma += next;
         }
-        return soma;
+        return soma;*/
 
-        /*return this.conteudosConcluidos
+        return this.conteudosConcluidos
                 .stream()
                 .mapToDouble(Conteudo::calcularXp)
-                .sum();*/
+                .sum();
     }
 
 
